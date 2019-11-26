@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Tarea} from '../modelos/tarea';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareaService {
 
-  constructor() { }
-
+  
   selectedTarea: Tarea;
   tareas: Tarea[];
 
@@ -22,14 +24,14 @@ export class TareaService {
   constructor(private http: HttpClient) {
     this.selectedTarea = new Tarea();
   }
-  
-  // api/tareas
-  postTarea(Tarea: Tarea) {
-    return this.http.post(this.URL_API, Tarea);
-  }
+
   // api/tareas
   getTareas() {
     return this.http.get(this.URL_API);
+  }
+  // api/tareas
+  postTarea(Tarea: Tarea) {
+    return this.http.post(this.URL_API, Tarea);
   }
   // api/tareas/:id
   getTarea(_id: string) {
@@ -44,7 +46,7 @@ export class TareaService {
     return this.http.delete(this.URL_API + `/${_id}`);
   }
   // api/tareas/:id/completada
-  getTarea(_id: string) {
+  checkTarea(_id: string) {
     return this.http.get(this.URL_API + `/${_id}/completada`);
   }
 

@@ -1,52 +1,52 @@
-<div class="col-md-8">
-  <table class="table table-bordered table-striped table-hover">
-    <thead>
-      <tr>
-        <th>N°</th>
-        <th>Titulo</th>
-        <th>Descripción</th>
-        <th>Fecha</th>
-        <th>Operaciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for(let i = 0; i < tareas.length; i++){%>
+<div class="row justify-content-center align-self-center">
+  <div class="col-10 ">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
         <tr>
-          <td><%= i + 1%></td>
-          <td><%= tareas[i].titulo%></td>
-          <td><%= tareas[i].descripcion%></td>
-          <td><%= tareas[i].fecha%></td>
-          <td>
-            <%
-            let color = "";
-            if(tareas[i].estado === true){
-              color = "success";
-            } else {
-              color = "dark";
-            }%>
-            <!-- <a href="{{  url('user', [$user->id])}}  " class="btn btn-danger" data-method="delete" data-confirm="Are you sure?">Delete</a> -->
-            <a href="/api/tareas/<%= tareas[i]._id %>/completada" class="btn btn-<%= tareas[i].estado === true? "success":"dark";%>" name="btnDone">Hecho</a>
-            <!-- <form method="POST" action="/<%=tareas[i]._id%>?_method=PUT">
-            <button class="btn btn-warning" type="submit">Editar</button>
-          </form> -->
-          <form method="GET" action="/api/tareas/<%=tareas[i]._id%>">
-            <button class="btn btn-warning" type="submit">Editar</button>
-          </form>
-          <script language="JavaScript">
-            function pregunta(){
-              if (confirm('¿Estas seguro de quieres eliminar la tarea seleccionada?')){
-                document.formBorrar.submit()
-              }
-            }
-          </script>
-          <form method="POST" action="/api/tareas/<%=tareas[i]._id%>?_method=DELETE" name="formBorrar">
-            <button class="btn btn-danger" type="submit">Borrar</button>
-            <!-- <input type="submit" onclick="pregunta()" class="btn btn-danger" value="Borrar"> -->
-            <!-- <div class="alert alert-danger">¿Estas seguro que deseas eliminar esta tarea?</div> -->
-          </form>
-        </td>
-      </tr>
-      <%}%>
-    </tbody>
-  </table>
+          <th>N°</th>
+          <th>Titulo</th>
+          <th>Descripción</th>
+          <th>Fecha</th>
+          <th>Operaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let tarea of tareas'>
+          <td>{{tarea._id}}</td>
+          <td>{{tarea.titulo}}</td>
+          <td>{{tarea.descripcion}}</td>
+          <td>{{tarea.fecha}}</td>
+          <!-- <%
+          let color = "";
+          if(tareas[i].estado === true){
+          color = "success";
+        } else {
+        color = "dark";
+      }%> -->
+      <!-- <a href="{{  url('user', [$user->id])}}  " class="btn btn-danger" data-method="delete" data-confirm="Are you sure?">Delete</a> -->
+      <!-- <a href="/api/tareas/<%= tareas[i]._id %>/completada" class="btn btn-<%= tareas[i].estado === true? "success":"dark";%>" name="btnDone">Hecho</a> -->
+      <!-- <form method="POST" action="/<%=tareas[i]._id%>?_method=PUT">
+      <button class="btn btn-warning" type="submit">Editar</button>
+    </form> -->
+    <td>
+      <form method="GET" action="/api/tareas/<%=tareas[i]._id%>">
+        <button class="btn btn-warning" type="submit">Editar</button>
+      </form>
+      <script language="JavaScript">
+        function pregunta(){
+          if (confirm('¿Estas seguro de quieres eliminar la tarea seleccionada?')){
+            document.formBorrar.submit()
+          }
+        }
+      </script>
+      <form method="POST" action="/api/tareas/<%=tareas[i]._id%>?_method=DELETE" name="formBorrar">
+        <button class="btn btn-danger" type="submit">Borrar</button>
+        <!-- <input type="submit" onclick="pregunta()" class="btn btn-danger" value="Borrar"> -->
+        <!-- <div class="alert alert-danger">¿Estas seguro que deseas eliminar esta tarea?</div> -->
+      </form>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
 </div>
