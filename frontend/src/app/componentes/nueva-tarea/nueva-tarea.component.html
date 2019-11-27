@@ -3,19 +3,27 @@
     <div class="card">
       <div class="card-body">
         <h2>Nuevo Evento</h2>
-        <form action="/api/tareas" method="post">
+        <form [formGroup]="tareaForm" (ngSubmit)="onSubmit(checkoutForm.value)">
           <div class="form-group">
-            <input type="text" class="form-control" name="titulo" placeholder="Ingrese el titulo">
+            <input formControlName="titulo" type="text" class="form-control" name="titulo" placeholder="Ingrese el titulo">
           </div>
           <div class="form-group">
-            <textarea cols="80" class="form-control" name="descripcion" placeholder="Inserte la descripción"></textarea>
+            <textarea formControlName="descripcion" cols="80" class="form-control" name="descripcion" placeholder="Inserte la descripción"></textarea>
           </div>
           <div class="form-group">
-            <input class="form-control" type="date" name="fecha">
+            <input formControlName="fecha" class="form-control" type="date" name="fecha">
           </div>
-          <button type="submit" class="btn btn-primary btn-block"name="button" value="Agregar">Agregar </button>
+
+          <button [disabled]="tareaForm.invalid" type="submit" class="btn btn-primary btn-block"name="button" value="Agregar">Agregar </button>
         </form>
       </div>
     </div>
   </div>
 </div>
+<!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="firstName">
+  <input type="number" formControlName="lastName" maxlength="10">
+  <input type="text" formControlName="email" >
+
+  <button type="submit" [disabled]="profileForm.invalid">Enviar</button>
+</form> -->
