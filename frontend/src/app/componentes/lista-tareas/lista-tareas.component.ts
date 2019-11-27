@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TareaService } from '../../servicios/tarea.service';
-import { Tarea } from '../../modelos/tarea'
+import { Tarea } from '../../modelos/tarea';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-lista-tareas',
@@ -9,18 +10,30 @@ import { Tarea } from '../../modelos/tarea'
 })
 export class ListaTareasComponent implements OnInit {
 
-  tareas: Tarea[];
+  // tareas: Tarea[];
+  tareas: [];
+  // selectedTarea: any = null;
 
-  constructor( private tareaService: TareaService ) { }
+  constructor( private tareaService: TareaService,
+    private httpClient: HttpClient
+   ) { }
 
   ngOnInit() {
-    this.getTareas();
+    this.cargarTareas();
   }
 
-  getTareas(): void {
-    this.tareas = this.tareaService.getTareas() as any;
-    // this.tareaService.getTareas()
-    //   .subscribe( tareas => this.tareas = tareas);
+  private cargarTareas() {
+    this.tareaService.getTareas()
+      .subscribe((tareas: any) => {console.log('En subscribe response', tareas);
+                                      this.tareas = tareas});
+    console.log("En cargarTareas");
+
+    // this.httpClient.get('https://conduit.productionready.io/api/articles')
+    //   .subscribe((response: any) => this.articles = response.articles);
+  }
+
+  onTareaRowClicked(article: any) {
+    // this.selectedArticle = article;
   }
 
 }

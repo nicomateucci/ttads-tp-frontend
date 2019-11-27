@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { TareaService} from '../../servicios/tarea.service';
 import { Tarea } from '../../modelos/tarea';
 
@@ -24,13 +24,12 @@ export class NuevaTareaComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(data) {
-    // Process checkout data here
-    console.warn('Your order has been submitted', data);
+  onSubmit() {
     console.log(this.tareaForm.value);
     // tarea = new Tarea();
     // tarea.titulo = data
 
+    alert('Tarea agregada correctamente');
     this.tareaForm.reset();
   }
 

@@ -15,7 +15,12 @@ const TareaCtrl = {};
 TareaCtrl.getTareas = (req, res, next) => {
   Tarea.find()
   .then(tareas => {
-    res.render('index', { tareas });
+    //**************************************************************************************
+    //**************************************************************************************
+    //**************************************************************************************
+    // res.render('index', { tareas }); Horrible, ate al backend a EJS !!!!!!!!!!!!!!!!!
+
+    res.json(tareas);
   })
   .catch(err => console.log(err));
 };
@@ -31,10 +36,8 @@ TareaCtrl.createTarea = (req, res, next) => {
 TareaCtrl.getTarea = (req, res, next) => {
   const {id} = req.params;
   Tarea.findById(id)
-  .then( tarea => {res.render("edit", {tarea})
-              console.log(tarea);
-  })
-  .catch( err => console.log(err));
+    .then( tarea => res.json(tarea))
+    .catch( err => console.log(err));
 };
 
 // MODEL updatevar conditions = { name: 'bourne' }
