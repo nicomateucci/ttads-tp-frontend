@@ -1,4 +1,6 @@
-
+<br>
+<h2>Lista de Tareas</h2>
+<hr>
 <div *ngIf="selectedTarea === null">
   <h1>Articulos</h1>
 
@@ -55,21 +57,12 @@
       <button class="btn btn-warning" type="submit">Editar</button>
     </form> -->
     <td>
-      <form method="GET" action="/api/tareas/<%=tareas[i]._id%>">
-        <button class="btn btn-warning" type="submit">Editar</button>
-      </form>
-      <script language="JavaScript">
-        function pregunta(){
-          if (confirm('¿Estas seguro de quieres eliminar la tarea seleccionada?')){
-            document.formBorrar.submit()
-          }
-        }
-      </script>
-      <form method="POST" action="/api/tareas/<%=tareas[i]._id%>?_method=DELETE" name="formBorrar">
-        <button class="btn btn-danger" type="submit">Borrar</button>
-        <!-- <input type="submit" onclick="pregunta()" class="btn btn-danger" value="Borrar"> -->
-        <!-- <div class="alert alert-danger">¿Estas seguro que deseas eliminar esta tarea?</div> -->
-      </form>
+      <button class="btn btn-sm btn-warning ml-1" routerLink="/detalles/{{tarea._id}}">
+        Editar
+      </button>
+      <button class="btn btn-sm btn-danger ml-1" (click)="borrarTarea(tarea)">
+        Borrar
+      </button>
     </td>
   </tr>
 </tbody>

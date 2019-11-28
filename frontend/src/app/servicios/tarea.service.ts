@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 })
 export class TareaService {
 
-  
+
   selectedTarea: Tarea;
   tareas: Tarea[];
 
@@ -30,16 +30,16 @@ export class TareaService {
     return this.http.get(this.URL_API);
   }
   // api/tareas
-  postTarea(Tarea: Tarea) {
-    return this.http.post(this.URL_API, Tarea);
+  postTarea(tarea: Tarea) {
+    return this.http.post(this.URL_API, tarea);
   }
   // api/tareas/:id
   getTarea(_id: string) {
     return this.http.get(this.URL_API + `/${_id}`);
   }
   // api/tareas/:id
-  putTarea(Tarea: Tarea) {
-    return this.http.put(this.URL_API + `/${Tarea._id}`, Tarea);
+  putTarea(tarea: Tarea) {
+    return this.http.put(this.URL_API + `/${tarea._id}`, tarea);
   }
   // api/tareas/:id
   deleteTarea(_id: string) {

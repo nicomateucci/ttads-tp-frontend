@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { TareaService} from '../../servicios/tarea.service';
+import { Tarea } from '../../modelos/tarea';
 
 @Component({
   selector: 'app-detalles-tarea',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetallesTareaComponent implements OnInit {
 
-  constructor() { }
+  constructor( private tareaService: TareaService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(t: Tarea){
+    
   }
 
 }

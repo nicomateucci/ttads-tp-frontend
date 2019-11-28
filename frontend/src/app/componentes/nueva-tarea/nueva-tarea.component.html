@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h2>Nuevo Evento</h2>
-        <form [formGroup]="tareaForm" (ngSubmit)="onSubmit(tareaForm.value)">
+        <form [formGroup]="tareaForm" (ngSubmit)="onSubmit(tareaForm)">
           <div class="form-group">
             <input formControlName="titulo" type="text" class="form-control" name="titulo" placeholder="Ingrese el titulo">
           </div>
@@ -14,7 +14,7 @@
             <input formControlName="fecha" class="form-control" type="date" name="fecha">
           </div>
 
-          <button [disabled]="tareaForm.invalid" type="submit" class="btn btn-primary btn-block"name="button" value="Agregar">Agregar </button>
+          <button [disabled]="tareaForm.invalid" type="submit" class="btn btn-primary btn-block" name="button" value="Agregar">Agregar </button>
         </form>
       </div>
     </div>

@@ -26,7 +26,12 @@ TareaCtrl.getTareas = (req, res, next) => {
 };
 
 TareaCtrl.createTarea = (req, res, next) => {
-  const tarea = new Tarea(req.body);
+  // const tarea = new Tarea(req.body);
+  const tarea = new Tarea({
+      titulo: req.body.titulo,
+      descripcion: req.body.descripcion,
+      fecha: req.body.fecha,
+  });
   tarea.save()
   .then( () => console.log("Tarea agregada correctamente"))
   .catch(err => console.log(err));

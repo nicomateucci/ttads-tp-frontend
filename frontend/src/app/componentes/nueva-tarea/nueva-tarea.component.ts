@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { TareaService} from '../../servicios/tarea.service';
 import { Tarea } from '../../modelos/tarea';
 
@@ -13,24 +14,31 @@ export class NuevaTareaComponent implements OnInit {
     private tareaService: TareaService,
   ) {}
 
-  // formControl = new FormControl('formTarea');
   tareaForm = new FormGroup({
-    // titulo: new FormControl('', [this.createCustomValidator()]),
     titulo: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', Validators.maxLength(50)),
+    descripcion: new FormControl('', [Validators.required]),
     fecha: new FormControl('', [Validators.required]),
   }, [Validators.required]);
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    console.log(this.tareaForm.value);
-    // tarea = new Tarea();
-    // tarea.titulo = data
-
-    alert('Tarea agregada correctamente');
-    this.tareaForm.reset();
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    this.tareaService.postTarea(form.value)
+      .subscribe( () => {
+        alert('Tarea agregada correctamente');
+        console.log(form.value);
+        // this.cargarTareas();
+        this.tareaForm.reset()
+    });
   }
+
+  // private cargarTareas() {
+  //   this.tareaService.getTareas()
+  //     .subscribe((tareas: any) => {console.log('En subscribe response', tareas);
+  //                                     this.tareas = tareas});
+  //   console.log("En cargarTareas");
+  // }
 
 }

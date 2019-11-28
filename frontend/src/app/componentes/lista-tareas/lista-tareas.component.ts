@@ -35,5 +35,19 @@ export class ListaTareasComponent implements OnInit {
   onTareaRowClicked(article: any) {
     // this.selectedArticle = article;
   }
+  editarTarea(t: Tarea) {
+    
+  }
 
+  borrarTarea(t: Tarea) {
+    if (window.confirm('Esta seguro que desea eliminar la tarea seleccionada ?')) {
+      this.tareaService.deleteTarea(t._id).subscribe(
+        () => {
+          // this.toast.setMessage('item deleted successfully.', 'success');
+          console.log('Tarea borrada correctamente');
+        },
+        error => console.log(error)
+      );
+    }
+  }
 }
