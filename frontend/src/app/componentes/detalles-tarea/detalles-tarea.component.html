@@ -4,7 +4,7 @@
     <div class="col-md-5 offset-md-3">
       <div class="card">
         <div class="card-body">
-          <form [formGroup]="tareaForm" (ngSubmit)="onSubmit(tareaForm)">
+          <form [formGroup]="tareaForm" (ngSubmit)="agregarTarea(tarea)" #form="ngForm" >
             <div class="form-group">
               <input type="text" class="form-control" name="titulo" value="{{tarea.titulo}}">
             </div>

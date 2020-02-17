@@ -1,29 +1,35 @@
 <div class="row justify-content-center align-self-centers">
-  <div class="col-6">
+  <div class="col-3">
     <div class="card">
       <div class="card-body">
         <h2>Nuevo Evento</h2>
-        <form [formGroup]="tareaForm" (ngSubmit)="onSubmit(tareaForm)">
+        <form class="form-inline" #form="ngForm" [formGroup]="agregarTareaForm" (ngSubmit)="agregarTarea(agregarTareaForm)">
           <div class="form-group">
             <input formControlName="titulo" type="text" class="form-control" name="titulo" placeholder="Ingrese el titulo">
           </div>
           <div class="form-group">
-            <textarea formControlName="descripcion" cols="80" class="form-control" name="descripcion" placeholder="Inserte la descripción"></textarea>
+            <textarea formControlName="descripcion" class="form-control" name="descripcion" placeholder="Inserte la descripción"></textarea>
           </div>
           <div class="form-group">
             <input formControlName="fecha" class="form-control" type="date" name="fecha">
           </div>
-
-          <button [disabled]="tareaForm.invalid" type="submit" class="btn btn-primary btn-block" name="button" value="Agregar">Agregar </button>
+          <button [disabled]="agregarTareaForm.invalid" type="submit" class="btn btn-primary btn-block" name="button" value="Agregar">Agregar </button>
         </form>
+        <!-- <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)">
+          <input class="form-control mr-2" type="text" name="name"
+                 [(ngModel)]="cat.name" placeholder="Name" required>
+          <input class="form-control mr-2" type="number" name="age"
+                 [(ngModel)]="cat.age" placeholder="Age" min="0" required>
+          <input class="form-control mr-2" type="number" name="weight"
+                 [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
+          <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
+            <i class="fa fa-floppy-o"></i> Save
+          </button>
+          <button class="btn btn-sm btn-warning" (click)="cancelEditing()">
+            <i class="fa fa-times"></i> Cancel
+          </button>
+        </form> -->
       </div>
     </div>
   </div>
 </div>
-<!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <input type="text" formControlName="firstName">
-  <input type="number" formControlName="lastName" maxlength="10">
-  <input type="text" formControlName="email" >
-
-  <button type="submit" [disabled]="profileForm.invalid">Enviar</button>
-</form> -->

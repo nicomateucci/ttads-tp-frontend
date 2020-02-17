@@ -33,6 +33,9 @@ export class TareaService {
   postTarea(tarea: Tarea) {
     return this.http.post(this.URL_API, tarea);
   }
+  // addCat(cat: Cat): Observable<Cat> {
+  //   return this.http.post<Cat>('/api/cat', cat);
+  // }
   // api/tareas/:id
   getTarea(_id: string) {
     return this.http.get(this.URL_API + `/${_id}`);

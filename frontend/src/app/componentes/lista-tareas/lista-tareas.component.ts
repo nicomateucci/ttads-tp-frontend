@@ -10,8 +10,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ListaTareasComponent implements OnInit {
 
-  // tareas: Tarea[];
   tareas: [];
+  // tareas: Tarea[];
   // selectedTarea: any = null;
 
   constructor( private tareaService: TareaService,
@@ -24,17 +24,15 @@ export class ListaTareasComponent implements OnInit {
 
   private cargarTareas() {
     this.tareaService.getTareas()
-      .subscribe((tareas: any) => {console.log('En subscribe response', tareas);
-                                      this.tareas = tareas});
-    console.log("En cargarTareas");
+      .subscribe((tareas: any) => { this.tareas = tareas});
+  }
 
     // this.httpClient.get('https://conduit.productionready.io/api/articles')
     //   .subscribe((response: any) => this.articles = response.articles);
-  }
-
   onTareaRowClicked(article: any) {
     // this.selectedArticle = article;
   }
+
   borrarTarea(t: Tarea) {
     if (window.confirm('Esta seguro que desea eliminar la tarea seleccionada ?')) {
       this.tareaService.deleteTarea(t._id).subscribe(
