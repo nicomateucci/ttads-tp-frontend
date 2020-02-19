@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h2>Nuevo Evento</h2>
-        <form class="form-inline" #form="ngForm" [formGroup]="agregarTareaForm" (ngSubmit)="agregarTarea(agregarTareaForm)">
+        <form class="form-inline" #form="ngForm" [formGroup]="agregarTareaForm" (ngSubmit)="agregarTarea(form)">
           <div class="form-group">
             <input formControlName="titulo" type="text" class="form-control" name="titulo" placeholder="Ingrese el titulo">
           </div>
