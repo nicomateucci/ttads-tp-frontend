@@ -1,37 +1,21 @@
 <br>
-<h2>Lista de Tareas</h2>
-<hr>
+<h2 class="row justify-content-center align-self-centers">Lista de Tareas</h2>
+<br>
 <div *ngIf="selectedTarea === null">
   <h1>Articulos</h1>
 
-  <app-fila-tareas
+  <app-fila-tareas class="row align-self-left"
   *ngFor="let tarea of tareas"
   (click)="onTareaRowClicked(tarea)"
   >
 </app-fila-tareas>
 </div>
 
-
-<!-- <div *ngIf="selectedArticle !== null">
-<h1>tarea Seleccionada</h1>
-<app-article-row
-[article]="selectedArticle"
->
-</app-article-row>
-
-</div> -->
-
-
-
-
-
-
 <div class="row justify-content-center align-self-center">
   <div class="col-6">
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
-          <th>N°</th>
           <th>Titulo</th>
           <th>Descripción</th>
           <th>Fecha</th>
@@ -40,26 +24,26 @@
       </thead>
       <tbody>
         <tr *ngFor='let tarea of tareas'>
-          <td>{{tarea._id}}</td>
           <td>{{tarea.titulo}}</td>
           <td>{{tarea.descripcion}}</td>
-          <td>{{tarea.fecha}}</td>
-          <!-- <%
+          <td>{{tarea.fecha | date:'dd/MM/yyyy'}}</td>
+          <!-- <% Como hago lo de los colores con Angular ?
           let color = "";
           if(tareas[i].estado === true){
           color = "success";
         } else {
         color = "dark";
-      }%> -->
+      }%> Para cada boton necesito un componentes en angular ? -->
       <!-- <a href="{{  url('user', [$user->id])}}  " class="btn btn-danger" data-method="delete" data-confirm="Are you sure?">Delete</a> -->
       <!-- <a href="/api/tareas/<%= tareas[i]._id %>/completada" class="btn btn-<%= tareas[i].estado === true? "success":"dark";%>" name="btnDone">Hecho</a> -->
       <!-- <form method="POST" action="/<%=tareas[i]._id%>?_method=PUT">
       <button class="btn btn-warning" type="submit">Editar</button>
     </form> -->
     <td>
-      <button class="btn btn-sm btn-warning ml-1" routerLink="/detalles/{{tarea._id}}">
+      <button class="btn btn-sm btn-warning ml-1" routerLink="/detalles/{{tarea._id}}" >
         Editar
       </button>
+      <br>
       <button class="btn btn-sm btn-danger ml-1" (click)="borrarTarea(tarea)">
         Borrar
       </button>

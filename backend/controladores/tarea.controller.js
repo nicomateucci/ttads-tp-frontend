@@ -1,4 +1,4 @@
-const Tarea = require('../modelos/Tarea')
+const Tarea = require('../modelos/Tarea.js')
 
 const TareaCtrl = {};
 
@@ -26,12 +26,13 @@ TareaCtrl.getTareas = (req, res, next) => {
 };
 
 TareaCtrl.createTarea = (req, res) => {
-  // const tarea = new Tarea(req.body);
-  const tarea = new Tarea({
-      titulo: req.body.titulo,
-      descripcion: req.body.descripcion,
-      fecha: req.body.fecha
-  });
+  const tarea = new Tarea(req.body);
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa ", req.body);
+  // const tarea = new Tarea({
+  //     titulo: req.body.titulo,
+  //     descripcion: req.body.descripcion,
+  //     fecha: req.body.fecha
+  // });
   tarea.save()
     .then( () => { console.log(tarea , " --- ") ;console.log("Tarea agregada correctamente")})
     .catch(err => console.log(err));

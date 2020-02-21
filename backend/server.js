@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const app = express();
 
@@ -14,14 +15,15 @@ mongoose.connect('mongodb://localhost/crud-mongo', {useNewUrlParser: true, useUn
 
 // Configuración
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'vistas'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'vistas'));
+// app.set('view engine', 'ejs');
 
 
 // middlewares express
+// app.use(express.urlencoded({extends: false }) );
+app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev')); //Ver peticiones al servidor
-app.use(express.urlencoded({extends: false }) );
 app.use(methodOverride('_method'));
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -32,8 +34,8 @@ app.use(methodOverride('_method'));
 // })
 
 // Importar rutas
-// const indexRoutes = require('./rutas/index');
-// app.use('/', indexRoutes)
+const indexRoutes = require('./rutas/index');
+app.use('/', indexRoutes)
 app.use(require('./rutas'));
 var router=express.Router();
 app.use(router);

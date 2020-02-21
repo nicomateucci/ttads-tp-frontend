@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Tarea} from '../modelos/tarea';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient ,HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareaService {
-
 
   selectedTarea: Tarea;
   tareas: Tarea[];
@@ -19,7 +22,7 @@ export class TareaService {
   // router.delete('/:id', tarea.deleteTarea);
   // router.get('/:id/completada', tarea.checkTarea);
 
-  readonly URL_API = 'http://localhost:3000/api/tareas';
+  private URL_API = 'http://localhost:3000/api/tareas';
 
   constructor(private http: HttpClient) {
     this.selectedTarea = new Tarea();
@@ -30,12 +33,10 @@ export class TareaService {
     return this.http.get(this.URL_API);
   }
   // api/tareas
-  postTarea(tarea: Tarea) {
-    return this.http.post(this.URL_API, tarea);
+  postTarea(tarea: Tarea): Observable<Tarea> {
+    console.log("En servicio" , tarea);
+    return this.http.post<Tarea>(this.URL_API, tarea, httpOptions);
   }
-  // addCat(cat: Cat): Observable<Cat> {
-  //   return this.http.post<Cat>('/api/cat', cat);
-  // }
   // api/tareas/:id
   getTarea(_id: string) {
     return this.http.get(this.URL_API + `/${_id}`);

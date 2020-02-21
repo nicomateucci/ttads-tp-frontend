@@ -10,31 +10,33 @@ import { Tarea } from '../../modelos/tarea';
   styleUrls: ['./nueva-tarea.component.css']
 })
 export class NuevaTareaComponent implements OnInit {
-  constructor(
-    private tareaService: TareaService,
-    private formBuilder: FormBuilder
-  ) {}
 
   agregarTareaForm: FormGroup;
   titulo = new FormControl('', [Validators.required]);
   descripcion = new FormControl('', [Validators.required]);
   fecha = new FormControl('', [Validators.required]);
+  // tarea = new Tarea();
+
+  constructor(
+    private tareaService: TareaService,
+    private formBuilder: FormBuilder
+  ) {  }
 
   ngOnInit() {
     this.agregarTareaForm = this.formBuilder.group({
       titulo: this.titulo,
       descripcion: this.descripcion,
       fecha: this.fecha
-    });
-  }
+  })}
 
-  agregarTarea(form?: NgForm) {
-    console.log("-------------------" , form.value);
-    this.tareaService.postTarea(form.value)
-      .subscribe( () => {
+  agregarTarea() {
+    this.tareaService.postTarea(this.agregarTareaForm.value)
+      .subscribe(
+        res => {
         alert('Tarea agregada correctamente');
-        form.reset();
-    });
+        this.agregarTareaForm.reset();
+        },
+        err => console.log(err));
   }
 
   // private cargarTareas() {
