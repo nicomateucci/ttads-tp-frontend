@@ -40,7 +40,9 @@
       <button class="btn btn-warning" type="submit">Editar</button>
     </form> -->
     <td>
-      <button class="btn btn-sm btn-warning ml-1" routerLink="/detalles/{{tarea._id}}" >
+      <button class="btn btn-sm btn-warning ml-1"  (click)="toEditarTarea(tarea)">
+      <!-- [routerLink]="['/', tarea.id]" -->
+      <!-- routerLink="/{{tarea._id}}" -->
         Editar
       </button>
       <br>

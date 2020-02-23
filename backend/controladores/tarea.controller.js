@@ -57,7 +57,9 @@ TareaCtrl.getTarea = (req, res, next) => {
 // })
 
 TareaCtrl.editTarea = (req, res, next) => {
-  const id = req.params.id;
+  // const id = req.params.id;
+  const { id } = req.params;
+  console.log("**********************", req.params.id);
   Tarea.updateOne({_id: id}, req.body)
     .then( () => console.log("Tarea editada correctamente"))
     .catch( err => console.log(err));
@@ -66,7 +68,8 @@ TareaCtrl.editTarea = (req, res, next) => {
 };
 
 TareaCtrl.deleteTarea = (req, res, next) => {
-  const id  = req.params.id;
+  // const id  = req.params.id;
+  const { id } = req.params;
   Tarea.deleteOne({_id: id})
     .then( () => console.log("Tarea borrada correctamente"))
     .catch( err => console.log(err));

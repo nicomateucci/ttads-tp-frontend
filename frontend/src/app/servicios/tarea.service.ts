@@ -39,11 +39,13 @@ export class TareaService {
   }
   // api/tareas/:id
   getTarea(_id: string) {
-    return this.http.get(this.URL_API + `/${_id}`);
+    console.log("En servicio" , _id);
+    return this.http.get(this.URL_API + `/${_id}`, httpOptions);
   }
   // api/tareas/:id
-  putTarea(tarea: Tarea) {
-    return this.http.put(this.URL_API + `/${tarea._id}`, tarea);
+  putTarea(tarea: Tarea): Observable<Tarea> {
+    console.log("En servicio" , tarea);
+    return this.http.put<Tarea>(this.URL_API + `/${tarea._id}`, tarea);
   }
   // api/tareas/:id
   deleteTarea(_id: string) {

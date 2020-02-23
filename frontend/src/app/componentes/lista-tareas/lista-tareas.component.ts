@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TareaService } from '../../servicios/tarea.service';
 import { Tarea } from '../../modelos/tarea';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-tareas',
@@ -15,7 +16,9 @@ export class ListaTareasComponent implements OnInit {
   // selectedTarea: any = null;
 
   constructor( private tareaService: TareaService,
-    private httpClient: HttpClient
+               private httpClient: HttpClient,
+               private route: ActivatedRoute,
+               private router:Router
    ) { }
 
   ngOnInit() {
@@ -27,13 +30,13 @@ export class ListaTareasComponent implements OnInit {
       .subscribe((tareas: any) => { this.tareas = tareas});
   }
 
-    // this.httpClient.get('https://conduit.productionready.io/api/articles')
-    //   .subscribe((response: any) => this.articles = response.articles);
-  onTareaRowClicked(article: any) {
-    // this.selectedArticle = article;
+  toEditarTarea(t: Tarea){
+    console.log("Tarea es ", t);
+    this.router.navigate(['/', t._id]);
   }
 
   borrarTarea(t: Tarea) {
+    console.log("Tarea es ", t);
     if (window.confirm('Esta seguro que desea eliminar la tarea seleccionada ?')) {
       this.tareaService.deleteTarea(t._id).subscribe(
         () => {
