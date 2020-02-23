@@ -5,24 +5,28 @@ import { Tarea } from '../../modelos/tarea';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detalles-tarea',
   templateUrl: './detalles-tarea.component.html',
-  styleUrls: ['./detalles-tarea.component.css']
+  styleUrls: ['./detalles-tarea.component.css'],
+  providers: [ DatePipe ]
 })
 export class DetallesTareaComponent implements OnInit {
-
-  id: string;
-  tarea: Tarea;
-  private sub: Subscription;
 
   constructor( private route: ActivatedRoute,
                private router: Router,
                private tareaService: TareaService,
                private location: Location,
-               private formBuilder: FormBuilder
+               private formBuilder: FormBuilder,
+               private datePipe: DatePipe
   ) { }
+
+
+  id: string;
+  tarea: Tarea;
+  private sub: Subscription;
 
   // tareaForm = new FormGroup({
   //   titulo: new FormControl('', [Validators.required]),
@@ -32,11 +36,13 @@ export class DetallesTareaComponent implements OnInit {
   tareaForm: FormGroup;
   titulo = new FormControl('', [Validators.required]);
   descripcion = new FormControl('', [Validators.required]);
-  fecha = new FormControl('', [Validators.required]);
+  fecha = new FormControl(new Date(), [Validators.required]);
+  fechaActual: any = new Date();
 
   ngOnInit(
   ) {
     this.getTarea();
+    // this.fechaActual = this.datePipe.transform(this.fecha, 'yyyy-MM-dd');
     this.tareaForm = this.formBuilder.group({
       titulo: this.titulo,
       descripcion: this.descripcion,
@@ -53,8 +59,7 @@ export class DetallesTareaComponent implements OnInit {
         });
     console.log("En detalles tarea, el id es", this.id);
     this.tareaService.getTarea(String(this.id))
-      .subscribe((t: any) => this.tarea = t, err => console.log(err));
-    console.log(this.tarea);
+      .subscribe((tar: Tarea) => {this.tarea = tar; console.log("Tarea encontrada es " , this.tarea);}, err => console.log("En error" , err));
   }
 
   volver(): void {

@@ -11,6 +11,7 @@ import { DetallesTareaComponent } from './componentes/detalles-tarea/detalles-ta
 import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
 import { BarraPrincipalComponent } from './componentes/barra-principal/barra-principal.component';
 import { FilaTareasComponent } from './componentes/fila-tareas/fila-tareas.component';
+import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FilaTareasComponent } from './componentes/fila-tareas/fila-tareas.compo
     DetallesTareaComponent,
     ListaTareasComponent,
     BarraPrincipalComponent,
-    FilaTareasComponent
+    FilaTareasComponent,
+    PaginaPrincipalComponent
   ],
   imports: [
     BrowserModule,
