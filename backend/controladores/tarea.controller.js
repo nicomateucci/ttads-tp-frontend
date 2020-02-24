@@ -27,7 +27,6 @@ TareaCtrl.getTareas = (req, res, next) => {
 
 TareaCtrl.createTarea = (req, res) => {
   const tarea = new Tarea(req.body);
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa ", req.body);
   // const tarea = new Tarea({
   //     titulo: req.body.titulo,
   //     descripcion: req.body.descripcion,
@@ -63,7 +62,7 @@ TareaCtrl.editTarea = (req, res, next) => {
   Tarea.updateOne({_id: id}, req.body)
     .then( () => console.log("Tarea editada correctamente"))
     .catch( err => console.log(err));
-  res.redirect("/api/tareas/");
+  res.redirect("/api/tareas");
   // console.log("Parametros: " + JSON.stringify(req.params));
 };
 

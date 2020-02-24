@@ -37,7 +37,7 @@ export class DetallesTareaComponent implements OnInit {
   titulo = new FormControl('', [Validators.required]);
   descripcion = new FormControl('', [Validators.required]);
   fecha = new FormControl(new Date(), [Validators.required]);
-  fechaActual: any = new Date();
+  // fechaActual: any = new Date();
 
   ngOnInit(
   ) {
@@ -59,7 +59,10 @@ export class DetallesTareaComponent implements OnInit {
         });
     console.log("En detalles tarea, el id es", this.id);
     this.tareaService.getTarea(String(this.id))
-      .subscribe((tar: Tarea) => {this.tarea = tar; console.log("Tarea encontrada es " , this.tarea);}, err => console.log("En error" , err));
+      .subscribe((tar: Tarea) => {
+        this.tarea = tar;
+        this.tareaForm.patchValue(this.tarea);
+      }, err => console.log("En error" , err));
   }
 
   volver(): void {
@@ -67,10 +70,12 @@ export class DetallesTareaComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("Tarea en detalles-component", this.tarea);
-    this.tareaService.putTarea(this.tarea).subscribe(
-      () => {
-        console.log('Tarea editada correctamente');
+    // console.log("Tarea en onSubmit", this.tareaForm.value);
+    console.log(this.tarea._id);
+    this.tareaForm.value._id = this.tarea._id;
+    this.tareaService.putTarea(this.tareaForm.value).subscribe(
+      (t) => {
+        console.log('Tarea editada correctamente', t);
       },
       error => console.log(error)
     );
