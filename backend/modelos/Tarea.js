@@ -9,6 +9,10 @@ const TareaSchema = new Schema({
   fecha: {
     type: Date,
     default: '1996/06/24'
+  },
+  estado: {
+    type: Boolean,
+    default: false
   }
 });
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TareaService} from '../../servicios/tarea.service';
 import { Tarea } from '../../modelos/tarea';
 
@@ -18,6 +19,7 @@ export class NuevaTareaComponent implements OnInit {
   // tarea = new Tarea();
 
   constructor(
+    private router: Router,
     private tareaService: TareaService,
     private formBuilder: FormBuilder
   ) {  }
@@ -37,13 +39,14 @@ export class NuevaTareaComponent implements OnInit {
         this.agregarTareaForm.reset();
         },
         err => console.log(err));
+    this.reloadPage();
   }
 
-  // private cargarTareas() {
-  //   this.tareaService.getTareas()
-  //     .subscribe((tareas: any) => {console.log('En subscribe response', tareas);
-  //                                     this.tareas = tareas});
-  //   console.log("En cargarTareas");
-  // }
+  reloadPage(){
+    // this.ngOnInit();
+    // console.log("En reloadPage");
+    this.router.navigateByUrl("/");
+    this.router.navigateByUrl("/tareas");
+  }
 
 }

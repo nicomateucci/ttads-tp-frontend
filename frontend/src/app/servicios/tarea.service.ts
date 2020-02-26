@@ -22,10 +22,11 @@ export class TareaService {
   // router.delete('/:id', tarea.deleteTarea);
   // router.get('/:id/completada', tarea.checkTarea);
 
-  private URL_API = 'http://localhost:3000/api/tareas';
+  private URL_API: string;
 
   constructor(private http: HttpClient) {
     this.selectedTarea = new Tarea();
+    this.URL_API = "http://localhost:3000/api/tareas";
   }
 
   // api/tareas

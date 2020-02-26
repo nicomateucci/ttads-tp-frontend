@@ -27,12 +27,9 @@
           <td>{{tarea.descripcion}}</td>
           <td>{{tarea.fecha | date:'dd/MM/yyyy'}}</td>
           <td>
-            <!-- <button class="btn btn-sm btn-{{}} ml-1" (click)="completarTarea(tarea)">
-              Completada
-            </button> -->
+            <button *ngIf="tarea.estado" class="btn btn-success m-1" ng-mouseover="false" ng-mouseleave="false" >Completada</button>
+            <button *ngIf="!tarea.estado" class="btn btn-info m-1" (click)="completarTarea(tarea)" >Sin completar</button>
             <button class="m-1 btn btn-sm btn-warning ml-1"  (click)="toEditarTarea(tarea)">
-              <!-- [routerLink]="['/', tarea.id]" -->
-              <!-- routerLink="/{{tarea._id}}" -->
               Editar
             </button>
             <button class="btn btn-sm btn-danger ml-1" (click)="borrarTarea(tarea)">

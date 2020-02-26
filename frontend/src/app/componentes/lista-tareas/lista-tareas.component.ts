@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ListaTareasComponent implements OnInit {
 
   tareas: [];
+  colorTarea: string;
   // tareas: Tarea[];
   // selectedTarea: any = null;
 
@@ -46,5 +47,19 @@ export class ListaTareasComponent implements OnInit {
         error => console.log(error)
       );
     }
+    this.reloadPage();
+    // this.router.navigate(['/']);
+  }
+  reloadPage() {
+    // this.router.navigateByUrl("localhost:4200");
+    this.ngOnInit();
+  }
+
+  completarTarea(t: Tarea){
+    this.tareaService.checkTarea(t._id).subscribe(
+      () => {console.log("Tarea completada")},
+      err => console.log(err)
+    );
+    this.reloadPage();
   }
 }

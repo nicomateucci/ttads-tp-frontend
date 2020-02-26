@@ -27,13 +27,8 @@ TareaCtrl.getTareas = (req, res, next) => {
 
 TareaCtrl.createTarea = (req, res) => {
   const tarea = new Tarea(req.body);
-  // const tarea = new Tarea({
-  //     titulo: req.body.titulo,
-  //     descripcion: req.body.descripcion,
-  //     fecha: req.body.fecha
-  // });
   tarea.save()
-    .then( () => { console.log(tarea , " --- ") ;console.log("Tarea agregada correctamente")})
+    .then( () => { console.log("Tarea agregada correctamente" , tarea)})
     .catch(err => console.log(err));
   res.redirect("/api/tareas");
 };
@@ -43,6 +38,7 @@ TareaCtrl.getTarea = (req, res, next) => {
   Tarea.findById(id)
     .then( tarea => res.json(tarea))
     .catch( err => console.log(err));
+  // res.redirect("/api/tareas");
 };
 
 // MODEL updatevar conditions = { name: 'bourne' }
@@ -58,21 +54,19 @@ TareaCtrl.getTarea = (req, res, next) => {
 TareaCtrl.editTarea = (req, res, next) => {
   // const id = req.params.id;
   const { id } = req.params;
-  console.log("**********************", req.params.id);
   Tarea.updateOne({_id: id}, req.body)
     .then( () => console.log("Tarea editada correctamente"))
     .catch( err => console.log(err));
-  res.redirect("/api/tareas");
+  // res.redirect("/api/tareas");
   // console.log("Parametros: " + JSON.stringify(req.params));
 };
 
 TareaCtrl.deleteTarea = (req, res, next) => {
-  // const id  = req.params.id;
   const { id } = req.params;
   Tarea.deleteOne({_id: id})
     .then( () => console.log("Tarea borrada correctamente"))
     .catch( err => console.log(err));
-  res.redirect("/api/tareas/");
+  res.redirect("/api/tareas");
 };
 
 TareaCtrl.checkTarea = (req, res, next) => {
@@ -84,7 +78,7 @@ TareaCtrl.checkTarea = (req, res, next) => {
       tarea.save();
     })
     .catch( err => console.log(err))
-  res.redirect("/api/tareas/");
+  res.redirect("/api/tareas");
 }
 
 module.exports = TareaCtrl;
