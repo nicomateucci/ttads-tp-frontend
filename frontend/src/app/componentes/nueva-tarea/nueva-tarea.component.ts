@@ -43,10 +43,8 @@ export class NuevaTareaComponent implements OnInit {
   }
 
   reloadPage(){
-    // this.ngOnInit();
-    // console.log("En reloadPage");
-    this.router.navigateByUrl("/");
-    this.router.navigateByUrl("/tareas");
+    this.router.navigateByUrl("/lista");
+    setInterval( () => this.router.navigateByUrl("/tareas"), 1000);
   }
 
 }

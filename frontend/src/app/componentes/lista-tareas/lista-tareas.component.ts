@@ -53,6 +53,7 @@ export class ListaTareasComponent implements OnInit {
   reloadPage() {
     // this.router.navigateByUrl("localhost:4200");
     this.ngOnInit();
+    this.ngOnInit();
   }
 
   completarTarea(t: Tarea){

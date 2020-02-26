@@ -73,7 +73,7 @@ TareaCtrl.checkTarea = (req, res, next) => {
   const id = req.params.id;
   Tarea.findById({_id: id})
     .then( (tarea) => {
-      tarea.estado = !tarea.estado;
+      tarea.estado = true;
       console.log("La tarea paso al estado " + tarea.estado);
       tarea.save();
     })

@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DetallesTareaComponent } from './componentes/detalles-tarea/detalles-tarea.component';
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
+import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
 
 
 const routes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', redirectTo: '/tareas', pathMatch: 'full' },
   { path: 'tareas', component: PaginaPrincipalComponent  },
+  { path: 'lista', component: ListaTareasComponent },
   { path: ':id', component: DetallesTareaComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
 ];
