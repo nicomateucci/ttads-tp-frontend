@@ -6,13 +6,12 @@
 
   <app-fila-tareas class="row align-self-left"
   *ngFor="let tarea of tareas"
-  (click)="onTareaRowClicked(tarea)"
-  >
+  (click)="onTareaRowClicked(tarea)">
 </app-fila-tareas>
 </div>
 
 <div class="row justify-content-center align-self-center">
-  <div class="col-6">
+  <div class="col-10">
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
@@ -27,31 +26,21 @@
           <td>{{tarea.titulo}}</td>
           <td>{{tarea.descripcion}}</td>
           <td>{{tarea.fecha | date:'dd/MM/yyyy'}}</td>
-          <!-- <% Como hago lo de los colores con Angular ?
-          let color = "";
-          if(tareas[i].estado === true){
-          color = "success";
-        } else {
-        color = "dark";
-      }%> Para cada boton necesito un componentes en angular ? -->
-      <!-- <a href="{{  url('user', [$user->id])}}  " class="btn btn-danger" data-method="delete" data-confirm="Are you sure?">Delete</a> -->
-      <!-- <a href="/api/tareas/<%= tareas[i]._id %>/completada" class="btn btn-<%= tareas[i].estado === true? "success":"dark";%>" name="btnDone">Hecho</a> -->
-      <!-- <form method="POST" action="/<%=tareas[i]._id%>?_method=PUT">
-      <button class="btn btn-warning" type="submit">Editar</button>
-    </form> -->
-    <td>
-      <button class="btn btn-sm btn-warning ml-1"  (click)="toEditarTarea(tarea)">
-      <!-- [routerLink]="['/', tarea.id]" -->
-      <!-- routerLink="/{{tarea._id}}" -->
-        Editar
-      </button>
-      <br>
-      <button class="btn btn-sm btn-danger ml-1" (click)="borrarTarea(tarea)">
-        Borrar
-      </button>
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
+          <td>
+            <!-- <button class="btn btn-sm btn-{{}} ml-1" (click)="completarTarea(tarea)">
+              Completada
+            </button> -->
+            <button class="m-1 btn btn-sm btn-warning ml-1"  (click)="toEditarTarea(tarea)">
+              <!-- [routerLink]="['/', tarea.id]" -->
+              <!-- routerLink="/{{tarea._id}}" -->
+              Editar
+            </button>
+            <button class="btn btn-sm btn-danger ml-1" (click)="borrarTarea(tarea)">
+              Borrar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

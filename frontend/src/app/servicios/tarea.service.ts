@@ -46,7 +46,7 @@ export class TareaService {
   putTarea(tarea: Tarea): Observable<any> {
     console.log("En servicio PUTTAREA" , tarea);
     console.log("RUTA EN PUT" , this.URL_API + `/${tarea._id}`)
-    return this.http.put(this.URL_API + `/${tarea._id}`, tarea);
+    return this.http.put(this.URL_API + `/${tarea._id}`, tarea, httpOptions);
   }
   // api/tareas/:id
   deleteTarea(_id: string) {

@@ -74,11 +74,11 @@ export class DetallesTareaComponent implements OnInit {
     console.log(this.tarea._id);
     this.tareaForm.value._id = this.tarea._id;
     this.tareaService.putTarea(this.tareaForm.value).subscribe(
-      (t) => {
+      (t: Tarea) => {
         console.log('Tarea editada correctamente', t);
-      },
-      error => console.log(error)
+      }
     );
+    this.router.navigateByUrl('/tareas');
   }
 
 }

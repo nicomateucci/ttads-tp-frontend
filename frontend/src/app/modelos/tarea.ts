@@ -5,10 +5,12 @@ export class Tarea {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha = fecha;
+        this.estado = estado;
     }
 
     _id: string;
     titulo: string;
     descripcion: string;
     fecha: string;
+    estado: boolean;
 }

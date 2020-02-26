@@ -2,18 +2,18 @@
 <div class="card">
   <div class="card-body">
     <h2>Nuevo Evento</h2>
-    <form class="form-inline" #form="ngForm" [formGroup]="agregarTareaForm" (ngSubmit)="agregarTarea()">
+    <form class="form-horizontal" #form="ngForm" [formGroup]="agregarTareaForm" (ngSubmit)="agregarTarea()">
       <div class="form-group">
-        <input formControlName="titulo" type="text" class="form-control" name="titulo" placeholder="Ingrese el titulo">
+        <input formControlName="titulo" type="text" class="m-1 form-control" name="titulo" placeholder="Ingrese el titulo">
       </div>
       <div class="form-group">
-        <textarea formControlName="descripcion" class="form-control" name="descripcion" placeholder="Inserte la descripción"></textarea>
+        <textarea formControlName="descripcion" class="m-1 form-control" name="descripcion" placeholder="Inserte la descripción"></textarea>
       </div>
       <div class="form-group">
-        <input formControlName="fecha" class="form-control" type="date" name="fecha">
+        <input formControlName="fecha" class="m-1 form-control" type="date" name="fecha">
       </div>
       <br>
-      <button [disabled]="agregarTareaForm.invalid" type="submit" class="btn btn-primary btn-block" name="button" value="Agregar">Agregar </button>
+      <button [disabled]="agregarTareaForm.invalid" type="submit" class="m-1 btn btn-primary btn-block" name="button" value="Agregar">Agregar </button>
     </form>
   </div>
 </div>
