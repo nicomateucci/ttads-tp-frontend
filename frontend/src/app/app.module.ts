@@ -12,6 +12,7 @@ import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.co
 import { BarraPrincipalComponent } from './componentes/barra-principal/barra-principal.component';
 import { FilaTareasComponent } from './componentes/fila-tareas/fila-tareas.component';
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
+import { AppErrorComponent } from './componentes/app-error/app-error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-
     ListaTareasComponent,
     BarraPrincipalComponent,
     FilaTareasComponent,
-    PaginaPrincipalComponent
+    PaginaPrincipalComponent,
+    AppErrorComponent
   ],
   imports: [
     BrowserModule,

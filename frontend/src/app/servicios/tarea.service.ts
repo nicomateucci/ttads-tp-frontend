@@ -47,11 +47,11 @@ export class TareaService {
   putTarea(tarea: Tarea): Observable<any> {
     console.log("En servicio PUTTAREA" , tarea);
     console.log("RUTA EN PUT" , this.URL_API + `/${tarea._id}`)
-    return this.http.put(this.URL_API + `/${tarea._id}`, tarea, httpOptions);
+    return this.http.put(this.URL_API + `/${tarea._id}`, tarea, { responseType: 'text' });
   }
   // api/tareas/:id
   deleteTarea(_id: string) {
-    return this.http.delete(this.URL_API + `/${_id}`);
+    return this.http.delete(this.URL_API + `/${_id}`, { responseType: 'text' });
   }
   // api/tareas/:id/completada
   checkTarea(_id: string) {

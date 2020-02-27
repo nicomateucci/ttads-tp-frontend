@@ -62,7 +62,7 @@ export class DetallesTareaComponent implements OnInit {
       .subscribe((tar: Tarea) => {
         this.tarea = tar;
         this.tareaForm.patchValue(this.tarea);
-      }, err => console.log("En error" , err));
+      }, err => {console.log(err); this.router.navigateByUrl("/error")});
   }
 
   volver(): void {
@@ -76,7 +76,8 @@ export class DetallesTareaComponent implements OnInit {
     this.tareaService.putTarea(this.tareaForm.value).subscribe(
       (t: Tarea) => {
         // console.log('Tarea editada correctamente', t);
-      }
+      },
+      err => {console.log(err); this.router.navigateByUrl("/error");}
     );
     this.router.navigateByUrl("/tareas");
   }

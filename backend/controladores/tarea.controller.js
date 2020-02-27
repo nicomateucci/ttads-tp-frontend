@@ -55,18 +55,24 @@ TareaCtrl.editTarea = (req, res, next) => {
   // const id = req.params.id;
   const { id } = req.params;
   Tarea.updateOne({_id: id}, req.body)
-    .then( () => console.log("Tarea editada correctamente"))
+    .then( () => {
+      console.log("Tarea editada correctamente");
+      res.status(200).send("Tarea editada correctamente")})
     .catch( err => console.log(err));
-  // res.redirect("/api/tareas");
+// res.writeHead(200, {'Content-Type': 'text/plain'});
+
+// res.redirect("/api/tareas");
   // console.log("Parametros: " + JSON.stringify(req.params));
 };
 
 TareaCtrl.deleteTarea = (req, res, next) => {
   const { id } = req.params;
   Tarea.deleteOne({_id: id})
-    .then( () => console.log("Tarea borrada correctamente"))
+    .then( () => {console.log("Tarea borrada correctamente");
+        res.status(200).send("Tarea borrada correctamente")})
     .catch( err => console.log(err));
-  res.redirect("/api/tareas");
+  // res.writeHead(200, {'Content-Type': 'text/plain'});
+  // res.redirect("/api/tareas");
 };
 
 TareaCtrl.checkTarea = (req, res, next) => {
@@ -76,9 +82,11 @@ TareaCtrl.checkTarea = (req, res, next) => {
       tarea.estado = true;
       console.log("La tarea paso al estado " + tarea.estado);
       tarea.save();
+      res.status(200).send("Tarea checkeada correctamente")
     })
     .catch( err => console.log(err))
-  res.redirect("/api/tareas");
+  // res.writeHead(200, {'Content-Type': 'text/plain'});
+  // res.redirect("/api/tareas");
 }
 
 module.exports = TareaCtrl;

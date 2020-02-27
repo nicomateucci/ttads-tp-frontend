@@ -28,7 +28,8 @@ export class ListaTareasComponent implements OnInit {
 
   private cargarTareas() {
     this.tareaService.getTareas()
-      .subscribe((tareas: any) => { this.tareas = tareas});
+      .subscribe((tareas: any) => { this.tareas = tareas},
+              err => {console.log(err); this.router.navigateByUrl("/error");});
   }
 
   toEditarTarea(t: Tarea){
@@ -44,7 +45,7 @@ export class ListaTareasComponent implements OnInit {
           // this.toast.setMessage('item deleted successfully.', 'success');
           console.log('Tarea borrada correctamente');
         },
-        error => console.log(error)
+        err => {console.log(err); this.router.navigateByUrl("/error");}
       );
     }
     this.reloadPage();
@@ -59,7 +60,7 @@ export class ListaTareasComponent implements OnInit {
   completarTarea(t: Tarea){
     this.tareaService.checkTarea(t._id).subscribe(
       () => {console.log("Tarea completada")},
-      err => console.log(err)
+      err => {console.log(err); this.router.navigateByUrl("/error");}
     );
     this.reloadPage();
   }
