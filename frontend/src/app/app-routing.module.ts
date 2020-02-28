@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DetallesTareaComponent } from './componentes/detalles-tarea/detalles-tarea.component';
+import { BuscarTareaComponent } from './componentes/buscar-tarea/buscar-tarea.component';
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
 import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
 import { AppErrorComponent } from './componentes/app-error/app-error.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'lista', component: ListaTareasComponent },
   { path: 'error', component: AppErrorComponent },
   { path:':id', component: DetallesTareaComponent },
+  { path:':titulo', component: BuscarTareaComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
 ];
 

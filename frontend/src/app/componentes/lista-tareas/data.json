@@ -1,0 +1,22 @@
+[{
+	"fecha": "2020-02-21T00:00:00.000Z",
+	"estado": false,
+	"_id": "5e5824ed4e309e39fc8850fd",
+  "titulo": "Salir a correr",
+  "descripcion": "Por el parque independencia, al menos 5 kilometros",
+	"__v": 0
+}, {
+	"fecha": "2020-01-30T00:00:00.000Z",
+	"estado": false,
+	"_id": "5e5824f24e309e39fc8850fe",
+  "titulo":"Jugar al futbol",
+  "descripcion":"Calles Cochabamba-España",
+	"__v": 0
+}, {
+	"fecha": "2020-02-12T00:00:00.000Z",
+	"estado": false,
+	"_id": "5e5824fd4e309e39fc8850ff",
+  "titulo":"Aprender escalas pentatonicas guitarra",
+  "descripcion":"En el Canal de Youtube Tus clases de guitarra",
+	"__v": 0
+}]

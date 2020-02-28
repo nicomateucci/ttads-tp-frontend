@@ -8,5 +8,6 @@ router.get('/:id', tarea.getTarea);
 router.put('/:id', tarea.editTarea);
 router.delete('/:id', tarea.deleteTarea);
 router.get('/:id/completada', tarea.checkTarea);
+router.get('/:titulo/buscar', tarea.filtrarTarea);
 
 module.exports = router;

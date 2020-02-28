@@ -76,10 +76,10 @@ export class DetallesTareaComponent implements OnInit {
     this.tareaService.putTarea(this.tareaForm.value).subscribe(
       (t: Tarea) => {
         // console.log('Tarea editada correctamente', t);
+        this.router.navigateByUrl("/tareas");
       },
       err => {console.log(err); this.router.navigateByUrl("/error");}
     );
-    this.router.navigateByUrl("/tareas");
   }
 
 }

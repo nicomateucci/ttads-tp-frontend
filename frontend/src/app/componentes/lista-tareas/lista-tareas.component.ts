@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+// declare module "*.json" {
+//     const value: any;
+//     export default value;
+// }
+import { Component, OnInit, Input } from '@angular/core';
 import { TareaService } from '../../servicios/tarea.service';
 import { Tarea } from '../../modelos/tarea';
 import { HttpClient} from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+// import * as data from "./data.json";
+// import { data } from './data.json';
 
 @Component({
   selector: 'app-lista-tareas',
@@ -11,8 +17,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListaTareasComponent implements OnInit {
 
-  tareas: [];
+  tareas = [];
   colorTarea: string;
+  @Input() tareasFiltradas: Array<any>;
   // tareas: Tarea[];
   // selectedTarea: any = null;
 
@@ -23,13 +30,21 @@ export class ListaTareasComponent implements OnInit {
    ) { }
 
   ngOnInit() {
+
     this.cargarTareas();
+    // if(this.tareasFiltradas){
+    //   console.log("Entro en if true");
+    //   this.cargarTareas();
+    // }else{
+    //   console.log("Entro en if false");
+    //   this.tareas = this.tareasFiltradas;
+    // }
   }
 
   private cargarTareas() {
     this.tareaService.getTareas()
-      .subscribe((tareas: any) => { this.tareas = tareas},
-              err => {console.log(err); this.router.navigateByUrl("/error");});
+      .subscribe((tareas: any) => { this.tareas = tareas;
+        },err => {console.log(err); this.router.navigateByUrl("/error");});
   }
 
   toEditarTarea(t: Tarea){
@@ -49,10 +64,9 @@ export class ListaTareasComponent implements OnInit {
       );
     }
     this.reloadPage();
-    // this.router.navigate(['/']);
   }
+
   reloadPage() {
-    // this.router.navigateByUrl("localhost:4200");
     this.ngOnInit();
     this.ngOnInit();
   }
@@ -60,7 +74,9 @@ export class ListaTareasComponent implements OnInit {
   completarTarea(t: Tarea){
     this.tareaService.checkTarea(t._id).subscribe(
       () => {console.log("Tarea completada")},
-      err => {console.log(err); this.router.navigateByUrl("/error");}
+      err => {console.log(err);
+        // this.router.navigateByUrl("/error");
+      }
     );
     this.reloadPage();
   }

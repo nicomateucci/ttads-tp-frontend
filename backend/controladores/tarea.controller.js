@@ -19,7 +19,7 @@ TareaCtrl.getTareas = (req, res, next) => {
     //**************************************************************************************
     //**************************************************************************************
     // res.render('index', { tareas }); Horrible, ate al backend a EJS !!!!!!!!!!!!!!!!!
-
+    console.log("La tarea es ", tareas);
     res.json(tareas);
   })
   .catch(err => console.log(err));
@@ -88,5 +88,18 @@ TareaCtrl.checkTarea = (req, res, next) => {
   // res.writeHead(200, {'Content-Type': 'text/plain'});
   // res.redirect("/api/tareas");
 }
+
+TareaCtrl.filtrarTarea = (req, res, next) => {
+    const titulo = req.params.titulo;
+    // var regex = {$regex: name};
+    Tarea.find({ "titulo" : {$regex: titulo}})
+      .then(tareas => {
+        console.log("Se encontraron las tareas ", tareas);
+        // res.status(200).send("Tarea encontrada");
+        res.status(200);
+        res.json(tareas);
+      })
+      .catch(e => console.log(e));
+    };
 
 module.exports = TareaCtrl;

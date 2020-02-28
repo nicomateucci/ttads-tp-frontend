@@ -57,5 +57,9 @@ export class TareaService {
   checkTarea(_id: string) {
     return this.http.get(this.URL_API + `/${_id}/completada`);
   }
+  filtrarTarea(titulo: string) {
+    return this.http.get(this.URL_API + `/${titulo}/buscar`);
+  }
+
 
 }
