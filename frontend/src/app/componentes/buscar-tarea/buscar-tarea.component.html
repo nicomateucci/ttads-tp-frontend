@@ -1,19 +1,16 @@
-<br>
-<h4 class="m-2">Filtrar tareas</h4>
-<hr>
 <div class="row m-2 justify-content-left align-self-left">
   <div class="card">
     <div class="card-body">
       <div class="box">
         <span class="icon"><i class="fa fa-search"  ></i></span>
         <!-- <input type="search" id="search" name='cadena' placeholder="Ingrese titulo ..." /> -->
-        <form class="form-inline" #form="ngForm" [formGroup]="buscarForm" (ngSubmit)="buscarTarea(cadena)">
+        <form class="form-inline" >
           <div class="form-group">
             <div class="md-form active-cyan active-cyan-23">
-              <input class="form-control" formControlName="cadena" name="cadena" type="text" placeholder="Filtar por titulo" aria-label="Search">
+              <input class="form-control" name="filterPost" [(ngModel)]="filterPost" type="text" placeholder="Filtar por titulo" aria-label="Search">
             </div>
             <!-- <button type="button" class='btn btn-info m-1' >Buscar</button> -->
-            <button [disabled]="buscarForm.invalid" type="submit" class="btn btn-info m-1" name="button">Buscar</button>
+            <!-- <button type="submit" class="btn btn-info m-1" name="button">Buscar</button> -->
           </div>
         </form>
       </div>

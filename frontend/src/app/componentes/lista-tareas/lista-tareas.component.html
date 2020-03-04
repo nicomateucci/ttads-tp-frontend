@@ -1,5 +1,25 @@
 <div class="container">
-  <app-buscar-tarea></app-buscar-tarea>
+  <br>
+  <h4 class="m-2">Filtrar tareas</h4>
+  <hr>
+  <!-- <app-buscar-tarea></app-buscar-tarea> -->
+  <div class="row m-2 justify-content-left align-self-left">
+    <div class="card">
+      <div class="card-body">
+        <div class="box">
+          <span class="icon"><i class="fa fa-search"  ></i></span>
+          <form class="form-inline" >
+            <div class="form-group">
+              <div class="md-form active-cyan active-cyan-23">
+                <input class="form-control" name="filterPost" [(ngModel)]="filterPost" type="text" placeholder="Filtar por titulo" aria-label="Search">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 <div class="col-10">
   <h2 class="row m-2 justify-content-center align-self-centers">Lista de Tareas</h2>
@@ -14,7 +34,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let tarea of tareas'>
+      <tr *ngFor='let tarea of tareas | filtroPorTitulo: filterPost'>
         <td>{{tarea.titulo}}</td>
         <td>{{tarea.descripcion}}</td>
         <td>{{tarea.fecha | date:'dd/MM/yyyy'}}</td>

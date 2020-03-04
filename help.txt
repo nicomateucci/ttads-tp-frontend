@@ -1,4 +1,7 @@
 Errores para corregir
 
 1 No toma correctamente los campos del form. Cuando los muestro por pantalla muestra los
-  viejos sin actualizar. Metodo onSubmit de detalles-tarea, al editar una tarea.
+  viejos sin actualizar. Método onSubmit de detalles-tarea, al editar una tarea.
+
+2 Luego de hacer la consulta a mongo según una expresión regular, no puedo mostrar en la lista
+  tareas encontradas

@@ -30,7 +30,7 @@ export class BuscarTareaComponent implements OnInit {
     this.tareaService.filtrarTarea(cad.value).subscribe(
       (tareas: any) => {
         console.log("En filtrar", cad.value);
-        this.router.navigateByUrl("/error");
+        // this.router.navigateByUrl("/error");
         setInterval(() => { this.router.navigate(['/tareas', tareas]) }, 2000);
         // this.router.navigate(['/tareas', tareas])
       },

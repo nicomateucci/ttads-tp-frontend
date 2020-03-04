@@ -19,6 +19,7 @@ export class ListaTareasComponent implements OnInit {
 
   tareas = [];
   colorTarea: string;
+  filterPost = [];
   @Input() tareasFiltradas: Array<any>;
   // tareas: Tarea[];
   // selectedTarea: any = null;

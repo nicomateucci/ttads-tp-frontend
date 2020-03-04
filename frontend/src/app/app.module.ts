@@ -13,6 +13,7 @@ import { BarraPrincipalComponent } from './componentes/barra-principal/barra-pri
 import { FilaTareasComponent } from './componentes/fila-tareas/fila-tareas.component';
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
 import { AppErrorComponent } from './componentes/app-error/app-error.component';
+import { FiltroPorTituloPipe } from './filtro/filtro-por-titulo.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AppErrorComponent } from './componentes/app-error/app-error.component';
     BarraPrincipalComponent,
     FilaTareasComponent,
     PaginaPrincipalComponent,
-    AppErrorComponent
+    AppErrorComponent,
+    FiltroPorTituloPipe
   ],
   imports: [
     BrowserModule,
