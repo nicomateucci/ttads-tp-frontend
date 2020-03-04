@@ -1,14 +1,8 @@
-// declare module "*.json" {
-//     const value: any;
-//     export default value;
-// }
 import { Component, OnInit, Input } from '@angular/core';
 import { TareaService } from '../../servicios/tarea.service';
 import { Tarea } from '../../modelos/tarea';
 import { HttpClient} from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-// import * as data from "./data.json";
-// import { data } from './data.json';
 
 @Component({
   selector: 'app-lista-tareas',
@@ -33,13 +27,6 @@ export class ListaTareasComponent implements OnInit {
   ngOnInit() {
 
     this.cargarTareas();
-    // if(this.tareasFiltradas){
-    //   console.log("Entro en if true");
-    //   this.cargarTareas();
-    // }else{
-    //   console.log("Entro en if false");
-    //   this.tareas = this.tareasFiltradas;
-    // }
   }
 
   private cargarTareas() {
@@ -49,12 +36,12 @@ export class ListaTareasComponent implements OnInit {
   }
 
   toEditarTarea(t: Tarea){
-    console.log("Tarea es ", t);
+    // console.log("Tarea es ", t);
     this.router.navigate(['/', t._id]);
   }
 
   borrarTarea(t: Tarea) {
-    console.log("Tarea es ", t);
+    // console.log("Tarea es ", t);
     if (window.confirm('Esta seguro que desea eliminar la tarea seleccionada ?')) {
       this.tareaService.deleteTarea(t._id).subscribe(
         () => {

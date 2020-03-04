@@ -34,18 +34,17 @@ export class NuevaTareaComponent implements OnInit {
   agregarTarea() {
     this.tareaService.postTarea(this.agregarTareaForm.value)
       .subscribe(
-        res => {
+        () => {
         alert('Tarea agregada correctamente');
         this.agregarTareaForm.reset();
+        this.reloadPage();
         },
         err => {console.log(err); this.router.navigateByUrl("/error")});
-    this.reloadPage();
   }
 
   reloadPage(){
-    //Hice esto porque no me recaragba el mismo componente. Obvio que esta mal implementado.
-    this.router.navigateByUrl("/lista");
-    setInterval( () => this.router.navigateByUrl("/tareas"), 1000);
+    this.router.navigateByUrl("/cargando");
+    setInterval( () => this.router.navigateByUrl("/tareas"), 2000);
   }
 
 }

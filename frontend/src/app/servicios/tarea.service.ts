@@ -35,18 +35,17 @@ export class TareaService {
   }
   // api/tareas
   postTarea(tarea: Tarea): Observable<Tarea> {
-    console.log("En servicio" , tarea);
+    // console.log("En servicio" , tarea);
     return this.http.post<Tarea>(this.URL_API, tarea, httpOptions);
   }
   // api/tareas/:id
   getTarea(_id: string) {
-    console.log("En servicio" , _id);
+    // console.log("En servicio" , _id);
     return this.http.get(this.URL_API + `/${_id}`, httpOptions);
   }
   // api/tareas/:id
   putTarea(tarea: Tarea): Observable<any> {
-    console.log("En servicio PUTTAREA" , tarea);
-    console.log("RUTA EN PUT" , this.URL_API + `/${tarea._id}`)
+    // console.log("En servicio PUTTAREA" , tarea);
     return this.http.put(this.URL_API + `/${tarea._id}`, tarea, { responseType: 'text' });
   }
   // api/tareas/:id

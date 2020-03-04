@@ -5,6 +5,7 @@ import { BuscarTareaComponent } from './componentes/buscar-tarea/buscar-tarea.co
 import { PaginaPrincipalComponent } from './componentes/pagina-principal/pagina-principal.component';
 import { ListaTareasComponent } from './componentes/lista-tareas/lista-tareas.component';
 import { AppErrorComponent } from './componentes/app-error/app-error.component';
+import { CargandoComponent } from './componentes/cargando/cargando.component';
 
 
 const routes: Routes = [
@@ -13,9 +14,8 @@ const routes: Routes = [
   { path: 'tareas', component: PaginaPrincipalComponent },
   { path: 'lista', component: ListaTareasComponent },
   { path: 'error', component: AppErrorComponent },
-  { path:':id', component: DetallesTareaComponent },
-  { path:':titulo', component: BuscarTareaComponent },
-  // { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'cargando', component: CargandoComponent },
+  { path:':id', component: DetallesTareaComponent }
 ];
 
 @NgModule({

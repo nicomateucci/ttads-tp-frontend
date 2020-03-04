@@ -7,21 +7,18 @@
         <div class="card-body">
           <form class="form-horizontal"  [formGroup]="tareaForm" (ngSubmit)="onSubmit()" >
             <div class="form-group">
-              <input formControlName="titulo" type="text" class="form-control" name="titulo" value="{{tarea.titulo}}">
+              <input formControlName="titulo" type="text" class="form-control" value="{{tarea.titulo}}">
             </div>
             <div class="form-group">
-              <textarea formControlName="descripcion" cols="80" class="form-control" name="descripcion">{{tarea.descripcion}}</textarea>
+              <textarea formControlName="descripcion" cols="80" class="form-control" >{{tarea.descripcion}}</textarea>
             </div>
             <div class="form-group">
-              <input formControlName="fecha" class="form-control" type="datetime-local" name="fecha" value="{{tarea.fecha | date: 'yyyy-MM-ddThh:mm'}}">
+              <input formControlName="fecha" class="form-control" type="datetime-local" value="{{tarea.fecha | date: 'yyyy-MM-ddThh:mm'}}">
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
-            <!-- <button class="btn btn-sm btn-warning ml-1" (click)="editarTarea(tarea)">
-            <i class="fa fa-trash"></i> Editar
-          </button> -->
+            <button [disabled]="tareaForm.invalid" type="submit" class="btn btn-primary btn-block">Confirmar</button>
           <br>
-          <button class="btn btn-secondary col-3" (click)="volver()">Volver</button>
         </form>
+          <button class="btn btn-secondary col-3" (click)="volver()">Volver</button>
       </div>
     </div>
   </div>
